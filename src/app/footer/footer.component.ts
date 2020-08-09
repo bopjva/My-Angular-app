@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -8,11 +9,29 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
   //  constructor also function and executed by defaukt when call the component and this relates to type script
   // constructor executes before the  ngOnInit function
-  constructor() {}
+  constructor(private router: Router) {}
   // ngOnInit also function and executed by defaukt when call the component and this relates to angular
 
   ngOnInit() {}
-  footerFunction() {
-    console.log('footerFunction called');
+  footerFunction() {}
+  contactUs() {
+    // navigate to other tabs by clicking on given links
+    this.router.navigate(['/contact']);
+    console.log('contactUs called');
   }
+  copyRight() {
+    this.router.navigate(['/copyright']);
+
+    console.log('copyright');
+  }
+  careers() {
+    this.router.navigate(['/careers']);
+
+    console.log('careers');
+  }
+  // aboutRoute() {
+  //   this.router.navigate(['/about']);
+
+  // console.log('aboutRoute');
+  // }
 }

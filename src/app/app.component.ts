@@ -64,7 +64,7 @@ export class AppComponent {
     }
   ];
 
-  employeeList: any = 'Hi';
+  // employeeList: any = 'Hi';
   // constructor function print by defult without calling it
   //  calling app service in constructor by passing as variable
   constructor(private appService: AppService) {
@@ -83,8 +83,9 @@ export class AppComponent {
     console.log(this.customer.cId);
     // console is pronting the data of object customer's talktime
     console.log(this.customer.talkTime);
-    // console is printing the data of 1st customer cName arrays object customerList
+    // console is printing the data of first customer cName arrays object customerList
     console.log(this.customerList[1].cName);
+    // console is printing the data of customerList object length only
     console.log(this.customerList.length);
 
     // this.x , this refers to the class name in JS
@@ -159,21 +160,46 @@ export class AppComponent {
     this.appService.getCaseInfoById(this.caseNumber);
   }
   // calling the service with no  parameters assigned in payBalanceDueFunction-> 0 argument function
-  payBalanceDueFunction() {
-    console.log('payBalanceDueFunction called');
-    // console.log(this.amount);
-    // subscribe is to use capture the reponse from service
-    this.appService.getBillPaidInformation().subscribe(result => {
-      //showtable will show table header when the condition is true ; showtable intialized as condition false at line 24
-      this.showTable = true;
-      //result = {data: [], status: 'success'}
-      console.log(result);
-      // printing the  emplyeelist on html as result object mentioned above in column 117
-      this.employeeList = result;
+  // payBalanceDueFunction() {
+  //   console.log('payBalanceDueFunction called');
+  //   // console.log(this.amount);
+  //   // subscribe is to use capture the reponse from service
+  //   this.appService.getBillPaidInformation().subscribe(result => {
+  //     //showtable will show table header when the condition is true ; showtable intialized as condition false at line 24
+  //     this.showTable = true;
+  //     //result = {data: [], status: 'success'}
+  //     console.log(result);
+  //     // printing the  emplyeelist on html as result object mentioned above in column 117
+  //     this.employeeList = result;
+  //     console.log(this.employeeList);
+  //     console.log(this.employeeList.data.length);
 
-      // for(let i=0; i<this.employeeList.data.length; i++){
-      //   this.employeeList.data[i].age;
-      // }
-    });
+  //     for (let i = 0; i < this.employeeList.data.length; i++) {
+  //       // if else condition print here both young and old
+  //       if (this.employeeList.data[i].employee_age <= 50) {
+  //         console.log(this.employeeList.data[i].employee_age, 'Young');
+  //       } else {
+  //         console.log(this.employeeList.data[i].employee_age, 'Old');
+  //       }
+  //       // if condition prints the yound data
+  //       // if (this.employeeList.data[i].employee_age <= 50) {
+  //       // console.log(this.employeeList.data[i].employee_age, 'Young');
+  //       // }
+  //       // console.log(this.employeeList.data[i].employee_age);
+  //       // this.employeeList.data[i].age;
+  //     }
+  //   });
+  // }
+  // let keyword use to create local variable to specific function
+  forLoopFunction() {
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 == 1) {
+        console.log(i);
+      }
+
+      // console.log(i);
+    }
+
+    console.log('forLoopFunction');
   }
 }
