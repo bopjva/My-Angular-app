@@ -1,0 +1,29 @@
+<p>search-results works!</p>
+<button (click)="getSearchResults()">Search Results</button>
+<div *ngIf="showTable">
+  <table>
+    <caption>
+      Student list
+    </caption>
+    <tr>
+      <th>Country</th>
+      <th>Course :</th>
+      <th>StudentId :</th>
+      <th>StudentName</th>
+      <th>studentPhoneNumber</th>
+      <th>year</th>
+    </tr>
+
+    <!--ngFor use to repeat the loop of data length  to print data from a employeeList.data   -->
+    <!-- below is startdard syntax for ngFor;here we creating emp as variable by using let keyword-->
+    <tr *ngFor="let student of studentList.data">
+      <!-- we need use string interpolation here for to print table data(td) -->
+      <td>{{ student.country }}</td>
+      <td>{{ student.course }}</td>
+      <td>{{ student.studentId }}</td>
+      <td>{{ student.studentName }}</td>
+      <td>{{ student.studentPhoneNumber }}</td>
+      <td>{{ student.year }}</td>
+    </tr>
+  </table>
+</div>

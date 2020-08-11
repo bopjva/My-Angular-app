@@ -13,6 +13,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CopyRightComponent } from './copy-right/copy-right.component';
 import { CareersComponent } from './careers/careers.component';
+import { MyworkComponent } from './mywork/mywork.component';
+import { SchoolComponent } from './school/school.component';
+import { SearchResultsComponent } from './school/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CareersComponent } from './careers/careers.component';
     AboutComponent,
     ContactusComponent,
     CopyRightComponent,
-    CareersComponent
+    CareersComponent,
+    MyworkComponent,
+    SchoolComponent,
+    SearchResultsComponent
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
   providers: [],

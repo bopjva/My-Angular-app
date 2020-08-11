@@ -7,6 +7,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CopyRightComponent } from './copy-right/copy-right.component';
 import { CareersComponent } from './careers/careers.component';
+import { SchoolComponent } from './school/school.component';
+import { SearchResultsComponent } from './school/search-results/search-results.component';
 
 // routing logic for page navigation
 const routes: Routes = [
@@ -20,7 +22,22 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'copyright', component: CopyRightComponent },
-  { path: 'careers', component: CareersComponent }
+  { path: 'careers', component: CareersComponent },
+  // children component
+  {
+    path: 'school',
+    component: SchoolComponent,
+    children: [
+      { path: '', redirectTo: 'search-results', pathMatch: 'full' },
+      { path: 'search-results', component: SearchResultsComponent }
+    ]
+  },
+  //Lazyloading
+  {
+    path: 'student',
+    loadChildren: () =>
+      import('./student/student.module').then(m => m.StudentModule)
+  }
 ];
 
 @NgModule({

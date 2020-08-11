@@ -1,0 +1,152 @@
+<p>mywork works!</p>
+<!-- <ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">Bill</a></li>
+  <li><a href="#contact">Usage</a></li>
+  <li><a href="#about">About</a></li>
+</ul> -->
+
+<!-- header compnent calling to get the customer info on the web browser -->
+<app-header></app-header>
+
+<!-- <p>Works</p> -->
+
+<!-- button tag used for the buttons to click on the application -->
+<button (click)="someFunction()">Search Customer</button>
+
+<!-- <button class="btn btn-primary">Search Customer</button> -->
+<button style="background-color:dodgerblue;" (click)="add(3, 6)">
+  Add 2 Numbers
+</button>
+<button (click)="addingNumberStringFunction('John', 34)">Third Button</button>
+<button (click)="add3NumbersFunction(50, 'Ram', true)">Fourth Button</button>
+<button (click)="testFunction(11, 'john', '6589031234', 26)">Test</button>
+<br />
+<br />
+
+<!-- <button (click)="loginFunction('Signin')">Login</button> -->
+<br />
+<br />
+<label for="username">User Name</label>
+<input
+  id="username"
+  type="string"
+  placeholder="Enter Username"
+  [(ngModel)]="username"
+/>
+<br />
+<label for="password">Password </label>
+<input
+  id="password"
+  type="string"
+  placeholder="Enter Password"
+  [(ngModel)]="password"
+/>
+<br />
+
+<button (click)="loginFunction('username', 'password')">Login</button>
+
+<!-- br tag is used for line break -->
+<br /><br />
+<button (click)="payBillFunction(204.89, '4008085743563265')">Proceed</button>
+<p>Billing Info</p>
+<button (click)="billHistoryFunction('Jan', 201, 'Feb', 324)">Bill</button>
+<br />
+
+<!-- data binding the value- -->
+<!-- Below the syntax for label(ex;Id) and variable(ex:customerId) to print on the browser  and 
+  variable should be in double curly braces-->
+Id: {{ customerId }}
+<br />
+
+<!-- string interpolation -->
+Age: {{ age }}
+<br />
+Owner: {{ accountOwner }}
+<br />
+Sum: {{ r }}
+<br />
+<label for="team">Enter Team ID:</label>
+
+<!-- two way data binding -->
+<!-- ngmodel is supposed used for two way data binding -->
+<!-- place holder for to display name of the box to do some action like Enter customerId will show in the box as per below  -->
+<input type="string" placeholder="Enter Team Id" [(ngModel)]="team" />
+
+<!-- <button class="btn btn-primary" [disabled]="team===" (click)="team=">
+  Reset
+</button> -->
+
+<br />
+<br />
+
+<!-- SSN:{{ ssn }} -->
+<label for="ssn">Enter SSN:</label>
+<input id="ssn" type="number" placeholder="Enter SSN" [(ngModel)]="ssn" />
+<br />
+<br />
+
+<!-- Full Name:{{ name }} -->
+<label for="name">Enter Name:</label>
+<input
+  id="name"
+  type="string"
+  placeholder="Enter Full Name"
+  [(ngModel)]="name"
+/>
+<br />
+<br />
+<label for="caseNumber">Case Number: </label>
+
+<!-- we should give id for all the input fields and shouldn't repeat  id in  same component-->
+<input
+  id="caseNumber"
+  type="string"
+  placeholder="Case Number"
+  [(ngModel)]="caseNumber"
+/>
+<button style="margin:5px;" (click)="caseNumberSearch()">
+  Case Number search
+</button>
+<br />
+<br />
+
+<!-- <label for="status">Status</label> -->
+<!-- <input
+  id="amount"
+  type="number"
+  placeholder="Enter Amount"
+  [(ngModel)]="amount"
+/> -->
+<!-- calling the function with empty parameters -->
+<!-- <button (click)="payBalanceDueFunction()">Pay</button> -->
+<br />
+<br />
+
+string interpolation used below for employeeList
+<!--  pipe and json used temporarily below  to display employee list on html , employee list have array of objects that 
+  we didn't created so far; we will eliminate this in future once we get more about on arrays -->
+<!-- {{ employeeList.data | json }} -->
+<!-- ngIF used to display showTable of employeeList data -->
+<!-- should we use  ngIf always in div tag? -->
+
+<!-- <table>
+  <tr>
+    <th>id:</th>
+    <th>employee_name:</th>
+    <th>employee_salary:</th>
+    <th>employee_age:</th>
+    <th>profile_image:</th>
+  </tr>
+</table> -->
+
+<button (click)="forLoopFunction()">For Loop</button>
+
+<!-- customer compnent calling here to get the customer info on the web browser -->
+<app-employee></app-employee>
+<app-customer></app-customer>
+<br />
+<br />
+
+<!-- footer compnent calling here to get the customer info on the web browser -->
+<app-footer></app-footer>

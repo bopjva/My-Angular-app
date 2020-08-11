@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 // install latest http to package.json by using this coomand in terminal"npm install @angular/http@latest"
 // import HTTP client to interact with backend sysytems
 import { HttpClient } from '@angular/common/http';
+import { combineLatest } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

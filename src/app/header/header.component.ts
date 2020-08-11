@@ -34,4 +34,10 @@ export class HeaderComponent implements OnInit {
 
     // console.log('aboutRoute');
   }
+  studentRoute() {
+    this.router.navigate(['/student']);
+  }
+  schoolRoute() {
+    this.router.navigate(['/school']);
+  }
 }
