@@ -10,8 +10,9 @@
       <th>Course :</th>
       <th>StudentId :</th>
       <th>StudentName</th>
-      <th>studentPhoneNumber</th>
-      <th>year</th>
+      <th>StudentPhoneNumber</th>
+      <th>Year</th>
+      <th>Actions</th>
     </tr>
 
     <!--ngFor use to repeat the loop of data length  to print data from a employeeList.data   -->
@@ -24,6 +25,18 @@
       <td>{{ student.studentName }}</td>
       <td>{{ student.studentPhoneNumber }}</td>
       <td>{{ student.year }}</td>
+      <!-- this will use to edit the student data in the table -->
+      <td>
+        <button (click)="editFunction(student.studentId)">
+          Edit Student
+        </button>
+      </td>
     </tr>
   </table>
 </div>
+<br />
+<br />
+<button (click)="createFunction()">Create Student</button>
+<br />
+<br />
+<button (click)="editFunction('student.studentId')">Edit Student</button>

@@ -16,6 +16,8 @@ import { CareersComponent } from './careers/careers.component';
 import { MyworkComponent } from './mywork/mywork.component';
 import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
+import { CreateStudentComponent } from './school/create-student/create-student.component';
+import { EditComponent } from './school/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { SearchResultsComponent } from './school/search-results/search-results.c
     CareersComponent,
     MyworkComponent,
     SchoolComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    CreateStudentComponent,
+    EditComponent
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
   providers: [],

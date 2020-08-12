@@ -9,6 +9,8 @@ import { CopyRightComponent } from './copy-right/copy-right.component';
 import { CareersComponent } from './careers/careers.component';
 import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
+import { CreateStudentComponent } from './school/create-student/create-student.component';
+import { EditComponent } from './school/edit/edit.component';
 
 // routing logic for page navigation
 const routes: Routes = [
@@ -29,7 +31,10 @@ const routes: Routes = [
     component: SchoolComponent,
     children: [
       { path: '', redirectTo: 'search-results', pathMatch: 'full' },
-      { path: 'search-results', component: SearchResultsComponent }
+      { path: 'search-results', component: SearchResultsComponent },
+      { path: 'create', component: CreateStudentComponent },
+      // dynamic route
+      { path: 'edit/:id', component: EditComponent }
     ]
   },
   //Lazyloading
