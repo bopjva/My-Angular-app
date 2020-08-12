@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactusComponent },
   { path: 'copyright', component: CopyRightComponent },
   { path: 'careers', component: CareersComponent },
-  // children component
+  // children component used to show children component in other component
   {
     path: 'school',
     component: SchoolComponent,
