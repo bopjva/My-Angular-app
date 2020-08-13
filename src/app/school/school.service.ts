@@ -16,7 +16,7 @@ export class SchoolService {
   }
   getStudentById(id: string) {
     console.log('getStudentById called');
-    let url: string = `http://localhost:3010/api/${this.id}`;
+    let url: string = `http://localhost:3010/api/student/${id}`;
     console.log(url);
     let response = this.http.get(url);
     console.log(response);
