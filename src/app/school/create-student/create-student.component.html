@@ -1,1 +1,96 @@
-<p>create-student works!</p>
+<form [formGroup]="studentCreateForm">
+  <label for="studentName">Student Id</label>
+  <input
+    type="text"
+    name="studentId"
+    id="studentId"
+    formControlName="studentId"
+  />
+  <br />
+  <br />
+  <label for="studentName">Student Name</label>
+  <input
+    type="text"
+    name="studentName"
+    id="studentName"
+    formControlName="studentName"
+  />
+  <div
+    *ngIf="
+      !studentCreateForm.controls.studentName.valid &&
+      studentCreateForm.controls.studentName.errors.required &&
+      formSubmitStatus
+    "
+  >
+    <p>This field is required</p>
+  </div>
+  <div
+    *ngIf="
+      !studentCreateForm.controls.studentName.valid &&
+      studentCreateForm.controls.studentName.errors.minlength &&
+      formSubmitStatus
+    "
+  >
+    <p>Minimum length should be 3</p>
+  </div>
+  <div
+    *ngIf="
+      !studentCreateForm.controls.studentName.valid &&
+      studentCreateForm.controls.studentName.errors.maxlength &&
+      formSubmitStatus
+    "
+  >
+    <p>Maximum length should be 7</p>
+  </div>
+  <br />
+  <br />
+  <label for="studentPhoneNumber">Student Phone Number</label>
+  <input
+    type="text"
+    name="studentPhoneNumber"
+    id="studentPhoneNumber"
+    formControlName="studentPhoneNumber"
+  />
+
+  <br />
+  <br />
+  <label for="country">Country</label>
+  <input type="text" name="country" id="country" formControlName="country" />
+
+  <br />
+  <br />
+  <label for="course">Course</label>
+  <input type="text" name="course" id="course" formControlName="course" />
+  <div
+    *ngIf="
+      !studentCreateForm.controls.course.valid &&
+      studentCreateForm.controls.course.errors.required &&
+      formSubmitStatus
+    "
+  >
+    <p>This field is required</p>
+  </div>
+  <br />
+  <br />
+  <label for="year">Year</label>
+  <input type="text" name="year" id="year" formControlName="year" />
+  <!-- <div
+    *ngIf="
+      !studentCreateForm.controls.year.valid &&
+      studentCreateForm.controls.year.errors.required &&
+      formSubmitStatus
+    "
+  >
+    <p>This field is required</p>
+  </div> -->
+  <br />
+  <br />
+  <!-- <button [disabled]="studentCreateForm.valid" (click)="createStudent()"> -->
+  <!-- Create Student-{{ studentCreateForm.valid }}-k -->
+  <!-- </button> -->
+  <button [disabled]="!studentCreateForm.valid" (click)="createStudent()">
+    Create Student
+  </button>
+</form>
+
+<!-- [disabled]="!studentCreateForm.valid" -->

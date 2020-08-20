@@ -22,4 +22,19 @@ export class SchoolService {
     console.log(response);
     return response;
   }
+  addStudent(studentData: any) {
+    console.log(studentData);
+    let url: string = 'http://localhost:3010/api/student';
+    let response = this.http.post(url, studentData);
+    console.log(response);
+    return response;
+  }
+  getUpdateStudentInfo(studentData: any) {
+    console.log('getUpdateStudentInfo function called');
+    let url: string = '';
+    console.log(url);
+    let response = this.http.put(url, studentData);
+    console.log(response);
+    return response;
+  }
 }

@@ -1,1 +1,70 @@
-<p>edit works!</p>
+<form [formGroup]="studentEditForm">
+  <label for="studentId">Student Id</label>
+  <input
+    type="text"
+    name="studentId"
+    id="studentId"
+    formControlName="studentId"
+  />
+  <div
+    *ngIf="
+      !studentEditForm.controls.studentId.valid &&
+      studentEditForm.controls.studentId.errors.required
+    "
+  >
+    <p>This field is required</p>
+  </div>
+  <div
+    *ngIf="
+      !studentEditForm.controls.studentId.valid &&
+      studentEditForm.controls.studentId.errors.minlength
+    "
+  >
+    <p>Minimum length should be 3</p>
+  </div>
+  <div
+    *ngIf="
+      !studentEditForm.controls.studentId.valid &&
+      studentEditForm.controls.studentId.errors.maxlength
+    "
+  >
+    <p>Maximum length should be 7</p>
+  </div>
+  <br />
+  <br />
+  <label for="studentName">Student Name</label>
+  <input
+    type="text"
+    name="studentName"
+    id="studentName"
+    formControlName="studentName"
+  />
+  <br />
+  <br />
+  <label for="studentPhoneNumber">Student Phone Number</label>
+  <input
+    type="text"
+    name="studentPhoneNumber"
+    id="studentPhoneNumber"
+    formControlName="studentPhoneNumber"
+  />
+  <br />
+  <br />
+  <label for="country">Country</label>
+  <input type="text" name="country" id="country" formControlName="country" />
+  <br />
+  <br />
+  <label for="course">Course</label>
+  <input type="text" name="course" id="course" formControlName="course" />
+  <br />
+  <br />
+  <label for="year">Year</label>
+  <input type="text" name="year" id="year" formControlName="year" />
+  <br />
+  <br />
+  <!-- update buttong will be disabled until required field have enter teh value -->
+  Property binding
+  <button [disabled]="!studentEditForm.valid" (click)="updateStudent($event)">
+    Update
+  </button>
+</form>
