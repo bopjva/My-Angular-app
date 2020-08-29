@@ -1,11 +1,21 @@
 <form [formGroup]="studentCreateForm">
-  <label for="studentName">Student Id</label>
+  <label for="studentId">Student Id</label>
   <input
     type="text"
     name="studentId"
     id="studentId"
     formControlName="studentId"
   />
+  <div
+    *ngIf="
+      !studentCreateForm.controls.studentId.valid &&
+      studentCreateForm.controls.studentId.errors.required &&
+      formSubmitStatus
+    "
+  >
+    <p>This field is required</p>
+  </div>
+
   <br />
   <br />
   <label for="studentName">Student Name</label>
@@ -97,11 +107,7 @@
   <!-- <button [disabled]="studentCreateForm.valid" (click)="createStudent()"> -->
   <!-- Create Student-{{ studentCreateForm.valid }}-k -->
   <!-- </button> -->
-  <button
-    [disabled]="!studentCreateForm.valid"
-    [disabled]="!studentCreateForm.valid"
-    (click)="createStudent()"
-  >
+  <button (click)="createStudent()">
     Create Student
   </button>
 </form>

@@ -37,7 +37,7 @@ export class SchoolService {
   }
   getUpdateStudentInfo(studentData: any) {
     console.log('getUpdateStudentInfo function called');
-    let url: string = '';
+    let url: string = 'http://localhost:3010/api/student/:id';
     console.log(url);
     let response = this.http.put(url, studentData);
     console.log(response);
@@ -80,6 +80,11 @@ export class SchoolService {
     let url1 = `http://localhost:3010/api/student/${id}`;
     return this.http.get(url1);
   }
+  deleteData(id: string) {
+    let url = `http://localhost:3010/api/student/${id}`;
+    return this.http.delete(url);
+  }
+
   // http://localhost:3010/api/getAllIds
   //   string params
   // http://localhost:4200/api/student/getById/CT0014

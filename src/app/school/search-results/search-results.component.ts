@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ResponseModel } from '../models/ResponseModel';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: 'app-search-results',
@@ -14,9 +15,18 @@ export class SearchResultsComponent implements OnInit {
   //ResponseModel;
   showTable: boolean = false;
 
-  constructor(private schoolService: SchoolService, private router: Router) {}
+  constructor(private schoolService: SchoolService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams
+      // filter(params => params.search)
+      .subscribe(params => {
+        console.log(params);
+        if (params.search) {
+          this.getSearchResults();
+        }
+      })
+  }
   getSearchResults() {
     console.log('Search results flow');
     console.log('1');
@@ -47,5 +57,12 @@ export class SearchResultsComponent implements OnInit {
   createParentFunction() {
     console.log('createParentFunction called');
     this.router.navigate(['/school/parent']);
+  }
+  deleteStudent(id: string) {
+    this.schoolService.deleteData(id).subscribe(res => {
+      console.log(res);
+      this.getSearchResults();
+    })
+
   }
 }
