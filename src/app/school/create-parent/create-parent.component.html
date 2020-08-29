@@ -1,0 +1,68 @@
+<form [formGroup]="parentCreateForm">
+  <label for="parentName">Parent Name</label>
+  <input
+    type="text"
+    name="parentName"
+    id="parentName"
+    formControlName="parentName"
+  />
+  <div
+    *ngIf="
+      !parentCreateForm.controls.parentName.valid &&
+      parentCreateForm.controls.parentName.errors.required &&
+      formSubmitStatus
+    "
+  >
+    <p>This field is required</p>
+  </div>
+  <div
+    *ngIf="
+      !parentCreateForm.controls.parentName.valid &&
+      parentCreateForm.controls.parentName.errors.minlength &&
+      formSubmitStatus
+    "
+  >
+    <p>Minimum length should 3 letters</p>
+  </div>
+  <div
+    *ngIf="
+      !parentCreateForm.controls.parentName.valid &&
+      parentCreateForm.controls.parentName.errors.maxlength &&
+      formSubmitStatus
+    "
+  >
+    <p>Maximum length should 10 letters</p>
+  </div>
+  <div
+    *ngIf="
+      !parentCreateForm.controls.parentName.valid &&
+      parentCreateForm.controls.parentName.errors.numberValidator &&
+      formSubmitStatus
+    "
+  >
+    <p>This field contain numbers</p>
+  </div>
+  <br />
+  <label for="parentPhoneNumber">Parent Phone Number</label>
+  <input
+    type="text"
+    name="parentPhoneNumber"
+    id="parentPhoneNumber"
+    formControlName="parentPhoneNumber"
+  />
+  <br />
+  <br />
+  <label for="emailId">Email Id</label>
+  <input type="text" name="emailId" id="emailId" formControlName="emailId" />
+  <br />
+  <br />
+  <label for="age">Age</label>
+  <input type="text" name="age" id="age" formControlName="age" />
+
+  <br />
+  <br />
+  <button (click)="createParent()">
+    Create Parent
+  </button>
+  <!-- [disabled]="!parentCreateForm.valid" -->
+</form>

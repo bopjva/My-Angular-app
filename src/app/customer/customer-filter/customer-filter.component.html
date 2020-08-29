@@ -1,0 +1,19 @@
+<p>customer-filter works!</p>
+<form [formGroup]="customerForm">
+  <!-- <label for="customerAge"> Customer Age</label> -->
+
+  <input type="text" name="country" id="country" formControlName="country" />
+
+  <input
+    type="text"
+    name="studentPhoneNumber"
+    id="studentPhoneNumber"
+    formControlName="studentPhoneNumber"
+  />
+
+  <input type="number" name="year" id="year" formControlName="year" />
+
+  <button (click)="searchByAge()">Search</button>
+  <br />
+  <br />
+</form>

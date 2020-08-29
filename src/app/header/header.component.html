@@ -1,8 +1,20 @@
 <ul>
-  <li><a (click)="homeRoute()">Home</a></li>
-  <li><a (click)="employeeRoute()">Employee</a></li>
-  <li><a (click)="customerRoute()">Customer</a></li>
-  <li><a (click)="schoolRoute()">School</a></li>
-  <li><a (click)="studentRoute()">Student(Lazy Loading)</a></li>
-  <li><a (click)="aboutRoute()">About Us</a></li>
+  <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <a (click)="homeRoute()" routerLink="/">Home</a>
+  </li>
+  <li routerLinkActive="active">
+    <a (click)="employeeRoute()" routerLink="Employee">Employee</a>
+  </li>
+  <li routerLinkActive="active">
+    <a (click)="customerRoute()" routerLink="Customer">Customer</a>
+  </li>
+  <li routerLinkActive="active">
+    <a (click)="schoolRoute()" routerLink="School">School</a>
+  </li>
+  <li routerLinkActive="active">
+    <a (click)="studentRoute()" routerLink="Student">Student(Lazy Loading)</a>
+  </li>
+  <li routerLinkActive="active">
+    <a (click)="aboutRoute()" [routerLink]="['About Us']">About Us</a>
+  </li>
 </ul>

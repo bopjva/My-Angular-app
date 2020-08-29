@@ -1,0 +1,22 @@
+<div *ngIf="showTable && studentResponse.data.length > 0">
+  {{ studentResponse.data[6].studentId }}
+  {{ studentResponse.data[6].studentName }}
+  {{ studentResponse.data[6].studentPhoneNumber }}
+  {{ studentResponse.data[6].course }}
+</div>
+<table>
+  <tr *ngIf="showTable">
+    <th>Student ID</th>
+    <th>Student Name</th>
+    <th>Student Course</th>
+    <th>Student Year</th>
+    <th>Student Phone Number</th>
+  </tr>
+  <tr *ngFor="let student of studentResponse.data">
+    <td>{{ student.studentName }}</td>
+    <td>{{ student.studentId }}</td>
+    <td>{{ student.studentPhoneNumber }}</td>
+    <td>{{ student.year }}</td>
+    <td>{{ student.course }}</td>
+  </tr>
+</table>

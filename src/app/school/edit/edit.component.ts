@@ -16,23 +16,28 @@ export class EditComponent implements OnInit {
     private schoolService: SchoolService,
     // routes and route are doing two diffent actions for different purpose
     private route: ActivatedRoute
-  ) {}
+  ) {
+    console.log('2');
+  }
 
   ngOnInit(): void {
+    console.log('3');
     this.createForm();
+    // How to extract data from url params
     // we are calling the id which is in the url: this will use to get the data by using unique id
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
+    console.log('5');
     this.schoolService
       .getStudentById(this.id)
       // subscribe will execute only if you get return response from line 30 in service
       .subscribe(result => {
-        console.log(result);
+        console.log('7');
         this.patchStudentValues(result);
       });
   }
 
   createForm() {
+    console.log('4');
     // creating the "studentCreateForm" as form type and this.fb.group make interaction with html and ts
     this.studentEditForm = this.fb.group({
       //studentId,studentName, studentPhoneNumber,country,course,year are the controls
@@ -67,7 +72,7 @@ export class EditComponent implements OnInit {
     }
   }
   patchStudentValues(result: any) {
-    console.log(result);
+    console.log('8');
     // this will binding the data to each value in the form
     this.studentEditForm.patchValue({
       studentId: result.data.studentId,

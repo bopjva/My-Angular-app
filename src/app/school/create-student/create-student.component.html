@@ -27,6 +27,15 @@
   <div
     *ngIf="
       !studentCreateForm.controls.studentName.valid &&
+      studentCreateForm.controls.studentName.errors.numberValidator &&
+      formSubmitStatus
+    "
+  >
+    <p>This field containd numbers</p>
+  </div>
+  <div
+    *ngIf="
+      !studentCreateForm.controls.studentName.valid &&
       studentCreateForm.controls.studentName.errors.minlength &&
       formSubmitStatus
     "
@@ -40,7 +49,7 @@
       formSubmitStatus
     "
   >
-    <p>Maximum length should be 7</p>
+    <p>Maximum length should be 10</p>
   </div>
   <br />
   <br />
@@ -88,9 +97,17 @@
   <!-- <button [disabled]="studentCreateForm.valid" (click)="createStudent()"> -->
   <!-- Create Student-{{ studentCreateForm.valid }}-k -->
   <!-- </button> -->
-  <button [disabled]="!studentCreateForm.valid" (click)="createStudent()">
+  <button
+    [disabled]="!studentCreateForm.valid"
+    [disabled]="!studentCreateForm.valid"
+    (click)="createStudent()"
+  >
     Create Student
   </button>
 </form>
 
-<!-- [disabled]="!studentCreateForm.valid" -->
+<div *ngIf="successMessage">
+  <p>User has been created</p>
+</div>
+
+<!-- [disabled]="!studentCreateForm.valid" [disabled]="!studentCreateForm.valid"-->

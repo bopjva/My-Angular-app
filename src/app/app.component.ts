@@ -21,6 +21,7 @@ export class AppComponent {
   username: string;
   password: string;
   amount: number;
+  myId: number = 20;
   // declare the showTable variable as boolean
   showTable: boolean = false;
 
@@ -201,5 +202,9 @@ export class AppComponent {
     }
 
     console.log('forLoopFunction');
+  }
+  oneWayDataBinding() {
+    this.myId = this.myId * 2;
+    // console.log(this.myId);
   }
 }

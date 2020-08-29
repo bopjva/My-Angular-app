@@ -17,17 +17,20 @@
       <th>Employee name:</th>
       <th>Employee age:</th>
       <th>Employee salary</th>
+      <th>Age Group</th>
+
       <!-- <th>Profile image</th> -->
     </tr>
 
     <!--ngFor use to repeat the loop of data length  to print data from a employeeList.data   -->
     <!-- below is startdard syntax for ngFor;here we creating emp as variable by using let keyword-->
-    <tr *ngFor="let emp of employeeList.data">
+    <tr *ngFor="let emp of newEmpList">
       <!-- we need use string interpolation here for to print table data(td) -->
       <td>{{ emp.id }}</td>
       <td>{{ emp.employee_name }}</td>
       <td>{{ emp.employee_age }}</td>
       <td>{{ emp.employee_salary }}</td>
+      <td>{{ emp.ageGroup }}</td>
       <!-- <td>{{ emp.profile_image }}</td> -->
     </tr>
   </table>

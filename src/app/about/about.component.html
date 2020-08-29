@@ -1,1 +1,17 @@
 <p>About my app!</p>
+
+<select
+  (change)="idChange($event.target.value)"
+  placeholder="Select Id"
+  name="studentId"
+  id="studentId"
+>
+  <option value="{{ studentId }}" *ngFor="let studentId of idList.data">{{
+    studentId
+  }}</option>
+</select>
+
+<div *ngIf="showData">
+  <p>Name= {{ studentData.data.studentName }}</p>
+  <p>Id= {{ studentData.data.studentId }}</p>
+</div>

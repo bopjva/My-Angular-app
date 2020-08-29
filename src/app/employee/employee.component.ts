@@ -9,6 +9,7 @@ import { AppService } from '../app.service';
 export class EmployeeComponent implements OnInit, OnDestroy {
   showTable: boolean = false;
   employeeList: any;
+  newEmpList: Array<any> = [];
   //ngOnInit same as constructor and executed before constructor
   ngOnInit() {
     console.log('EmployeeComponent ngOnInit called');
@@ -46,19 +47,43 @@ export class EmployeeComponent implements OnInit, OnDestroy {
       //   }
       // }
       // i=0
-      for (let i = 0; i < this.employeeList.data.length; i++) {
-        // if else condition print here both young and old
-        if (this.employeeList.data[i].employee_age <= 50) {
-          console.log(this.employeeList.data[i].employee_age, 'Young');
+      // let arr = [1];
+      // arr.push(4);
+      // [1,2,3,4]
+      // this.newEmpList = [
+      //   { id: 1, name: '', ageGroup: 'older' },
+      //   { id: 2, name: '', ageGroup: 'older' },
+      //   { id: 3, name: '', ageGroup: 'older' }
+      // ]
+      this.employeeList.data.forEach((employee) => {
+        if (employee.employee_age <= 40) {
+          let status = 'young';
+          // use spread operator to add to new variable to object
+          let emp = { ...employee, ageGroup: status };
+          // use push operator to add new object to array
+          this.newEmpList.push(emp);
         } else {
-          console.log(this.employeeList.data[i].employee_age, ' Old');
+          let status = 'older';
+          let emp = { ...employee, ageGroup: status };
+          this.newEmpList.push(emp);
         }
-        if (this.employeeList.data[i].employee_salary <= 150000) {
-          console.log(this.employeeList.data[i].employee_salary, 'Low Salary');
-        } else {
-          console.log(this.employeeList.data[i].employee_salary, 'High Salary');
-        }
-      }
+      });
+
+      // console.log(this.employeeList.data);
+      // {name:'', id:1, age:20, ageGroup: 'young'}
+      // for (let i = 0; i < this.employeeList.data.length; i++) {
+      //   // if else condition print here both young and old
+      //   if (this.employeeList.data[i].employee_age <= 50) {
+      //     console.log(this.employeeList.data[i].employee_age, 'Young');
+      //   } else {
+      //     console.log(this.employeeList.data[i].employee_age, ' Old');
+      //   }
+      //   if (this.employeeList.data[i].employee_salary <= 150000) {
+      //     console.log(this.employeeList.data[i].employee_salary, 'Low Salary');
+      //   } else {
+      //     console.log(this.employeeList.data[i].employee_salary, 'High Salary');
+      //   }
+      // }
       // if condition prints the yound data
       // if (this.employeeList.data[i].employee_age <= 50) {
       // console.log(this.employeeList.data[i].employee_age, 'Young');

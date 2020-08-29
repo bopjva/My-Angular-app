@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { CustomerComponent } from './customer/customer.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -18,6 +17,10 @@ import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
+import { CreateParentComponent } from './school/create-parent/create-parent.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerFilterComponent } from './customer/customer-filter/customer-filter.component';
+import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { EditComponent } from './school/edit/edit.component';
     SchoolComponent,
     SearchResultsComponent,
     CreateStudentComponent,
-    EditComponent
+    EditComponent,
+    CreateParentComponent,
+    CustomerFilterComponent,
+    CustomerTableComponent
   ],
   imports: [
     BrowserModule,

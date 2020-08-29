@@ -1,0 +1,21 @@
+<p>customer-table works!</p>
+<div *ngIf="showTable && customerResponse.data.length > 0">
+  {{ customerResponse.data[2].studentPhoneNumber }}
+</div>
+
+<table *ngIf="showTable">
+  <tr>
+    <th>Name</th>
+    <th>Student ID</th>
+    <th>Contac</th>
+    <th>Year</th>
+    <th>Course</th>
+  </tr>
+  <tr *ngFor="let customer of customerResponse.data">
+    <td>{{ customer.studentName }}</td>
+    <td>{{ customer.studentId }}</td>
+    <td>{{ customer.studentPhoneNumber }}</td>
+    <td>{{ customer.year }}</td>
+    <td>{{ customer.course }}</td>
+  </tr>
+</table>

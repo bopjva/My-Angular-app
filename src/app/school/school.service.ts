@@ -1,30 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { ResponseModel } from './models/ResponseModel';
+import { SharedPathService } from '../shared-path/shared-path.service';
 @Injectable({
   providedIn: 'root'
 })
 export class SchoolService {
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private sharedPathService: SharedPathService) {
+
+  }
   getAllStudents() {
-    console.log('getAllStudents called');
+    console.log('2');
     let url: string = 'http://localhost:3010/api/student';
-    console.log(url);
+    // console.log(url);
     let response = this.http.get(url);
-    console.log(response);
+    console.log('3');
     return response;
   }
   getStudentById(id: string) {
-    console.log('getStudentById called');
+    console.log('6');
     let url: string = `http://localhost:3010/api/student/${id}`;
-    console.log(url);
-    let response = this.http.get(url);
-    console.log(response);
-    return response;
+    // console.log(url);
+    // let response = this.http.get<ResponseModel>(url);
+    // console.log(response);
+    // return response;
+    return this.http.get<ResponseModel>(url);
   }
   addStudent(studentData: any) {
     console.log(studentData);
     let url: string = 'http://localhost:3010/api/student';
+    //  How you pass dynamic params to url
     let response = this.http.post(url, studentData);
     console.log(response);
     return response;
@@ -37,4 +43,48 @@ export class SchoolService {
     console.log(response);
     return response;
   }
+
+  getCustomerByAge(user: any) {
+    console.log('5');
+    console.log(user)
+    let url1 = `http://localhost:3010/api/student?year=${user.year}&age=${user.country}&pNo=${user.studentPhoneNumber}`;
+    console.log(url1);
+    let url: string = 'http://localhost:3010/api/student';
+    this.http.get(url).subscribe(result => {
+      this.sharedPathService.getCustomerAge(result);
+
+    });
+
+  }
+
+  getStudentData(student: any) {
+    console.log(student);
+    let url = `http://localhost:3010/api/student?course=${student.studentCourse}&id=${student.studentId}&pNo=${student.studentPhoneNumber}&year=${student.studentYear}`;
+    console.log(url);
+    let url1: string = ' http://localhost:3010/api/student';
+    this.http.get(url1).subscribe(res => {
+      this.sharedPathService.getCustomerAge(res);
+    })
+
+
+  }
+  getStudentIds() {
+    console.log('3')
+    let url = 'http://localhost:3010/api/getAllIds';
+
+    return this.http.get(url);
+    // /api/student/:id
+
+  }
+  getStudentId(id: any) {
+    let url1 = `http://localhost:3010/api/student/${id}`;
+    return this.http.get(url1);
+  }
+  // http://localhost:3010/api/getAllIds
+  //   string params
+  // http://localhost:4200/api/student/getById/CT0014
+
+
+  // query params
+  // http://localhost:4200/api/student?name='bhargav'&state='va'&age=27
 }

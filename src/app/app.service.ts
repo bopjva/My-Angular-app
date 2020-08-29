@@ -12,7 +12,7 @@ import { combineLatest } from 'rxjs';
 export class AppService {
   // constructor function print by defult without calling it
   //  In constructor, declare  private variable as http by defining type as HttpClient
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   // getCaseInfoById is created with single attribute having string type
   getCaseInfoById(caseNumber: string) {
     console.log(caseNumber);
@@ -45,6 +45,8 @@ export class AppService {
     return response;
   }
 }
+
+// /api/getAllIds
 
 // GET - TO GET DATA
 // POST - CREATE DATA

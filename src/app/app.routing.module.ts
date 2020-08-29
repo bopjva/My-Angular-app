@@ -11,6 +11,7 @@ import { SchoolComponent } from './school/school.component';
 import { SearchResultsComponent } from './school/search-results/search-results.component';
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
+import { CreateParentComponent } from './school/create-parent/create-parent.component';
 
 // routing logic for page navigation
 const routes: Routes = [
@@ -33,6 +34,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'search-results', pathMatch: 'full' },
       { path: 'search-results', component: SearchResultsComponent },
       { path: 'create', component: CreateStudentComponent },
+      { path: 'parent', component: CreateParentComponent },
+
       // dynamic route
       { path: 'edit/:id', component: EditComponent }
     ]

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { checkForNumber } from '../../utils/custome-validators';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
 import { SchoolService } from '../school.service';
+import { StudentModel } from '../models/StudentModel';
 
 @Component({
   selector: 'app-create-student',
@@ -10,8 +17,10 @@ import { SchoolService } from '../school.service';
 export class CreateStudentComponent implements OnInit {
   studentCreateForm: FormGroup;
   formSubmitStatus: boolean;
+  res: any;
+  successMessage: boolean = false;
 
-  constructor(private fb: FormBuilder, private schoolService: SchoolService) {}
+  constructor(private fb: FormBuilder, private schoolService: SchoolService) { }
 
   ngOnInit(): void {
     // if we want to render the form in html, we need run below call in ngoninit
@@ -64,7 +73,8 @@ export class CreateStudentComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.maxLength(10),
-          Validators.minLength(4)
+          Validators.minLength(4),
+          checkForNumber
         ])
       ],
       studentPhoneNumber: [null],
@@ -73,15 +83,32 @@ export class CreateStudentComponent implements OnInit {
       year: [null]
     });
   }
+
   createStudent() {
+    // let s = 'karthik';
+    // regular expressions
+    // let r = /\d/.test(s);
+    // console.log(r);
+    console.log(this.studentCreateForm);
     this.formSubmitStatus = true;
     console.log('createStudent function called');
     console.log(this.studentCreateForm);
+    let stuForm: StudentModel = this.studentCreateForm.value;
     this.schoolService
       .addStudent(this.studentCreateForm.value)
       .subscribe(result => {
+        this.res = result;
         console.log(result);
+        this.successMessage = true;
+      }, (err) => {
+        console.log(err);
       });
     // console.log(this.studentCreateForm);
   }
 }
+
+// .subscribe((res) => {
+  //success
+// }, (err) => {
+  //err
+// })

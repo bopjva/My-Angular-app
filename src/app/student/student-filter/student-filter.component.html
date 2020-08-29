@@ -1,0 +1,27 @@
+<form [formGroup]="studentForm">
+  <input
+    type="text"
+    name="studentCourse"
+    id="studentCourse"
+    formControlName="studentCourse"
+  />
+  <input
+    type="number"
+    name="studentYear"
+    id="studentYear"
+    formControlName="studentYear"
+  />
+  <input
+    type="text"
+    name="studentId"
+    id="studentId"
+    formControlName="studentId"
+  />
+  <input
+    type="text"
+    name="studentPhoneNumber"
+    id="studentPhoneNumber"
+    formControlName="studentPhoneNumber"
+  />
+</form>
+<button (click)="searchStudent()">Student Search</button>

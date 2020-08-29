@@ -1,22 +1,27 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { SchoolService } from '../school/school.service';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss']
 })
-export class CustomerComponent implements OnInit, OnDestroy {
+export class CustomerComponent implements OnInit {
+  customerResponse: any;
+  showTable: boolean = false;
+
   //  constructor also function and executed by defaukt when call the component and this relates to type script
   // constructor executes before the  ngOnInit function
-
+  customerForm: FormGroup;
   constructor() {
-    console.log('CustomerComponent constructor called');
+    console.log('CustomerComponent initializing flow');
+    console.log('1');
   }
-  // ngOnInit also function and executed by defaukt when call the component and this relates to angular
   ngOnInit() {
-    console.log('CustomerComponent ngOnInit called');
+
   }
-  ngOnDestroy() {
-    console.log('CustomerComponent Destroyed');
-  }
+
+
+
 }
