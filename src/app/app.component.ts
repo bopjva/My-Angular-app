@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // impott AppService in app compenent to interact with app service
 import { AppService } from './app.service';
+import { SpinnerService } from './shared-path/spinner.service';
 // component is nothing but class in JS
 @Component({
   // selector is unique
@@ -8,7 +9,7 @@ import { AppService } from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   // variable declaration- Global variables
   customerId: String = '498uid';
   age: number = 28;
@@ -22,6 +23,7 @@ export class AppComponent {
   password: string;
   amount: number;
   myId: number = 20;
+  loading: boolean = false;
   // declare the showTable variable as boolean
   showTable: boolean = false;
 
@@ -68,11 +70,18 @@ export class AppComponent {
   // employeeList: any = 'Hi';
   // constructor function print by defult without calling it
   //  calling app service in constructor by passing as variable
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, private spinnerService: SpinnerService) {
     // console log prints the data in console in the browser
     console.log('constructor called');
   }
+  ngOnInit() {
+    this.spinnerService.cast.subscribe(res => {
+      this.loading = res;
+      console.log(this.loading);
+    })
 
+
+  }
   someFunction() {
     //code
     // calling other function (customerId)here in this function(someFunction)
@@ -153,7 +162,7 @@ export class AppComponent {
     this.functionName(1, 2, 3);
   }
 
-  functionName(a: number, b: number, c: number) {}
+  functionName(a: number, b: number, c: number) { }
   caseNumberSearch() {
     // console is printing the caseNumber value
     console.log(this.caseNumber);
