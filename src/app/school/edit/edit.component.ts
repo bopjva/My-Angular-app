@@ -49,7 +49,7 @@ export class EditComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(7),
+          Validators.maxLength(10),
           Validators.minLength(3)
         ])
       ],

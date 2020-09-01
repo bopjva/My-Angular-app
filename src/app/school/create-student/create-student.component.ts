@@ -73,7 +73,7 @@ export class CreateStudentComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.maxLength(10),
-          Validators.minLength(4),
+          Validators.minLength(2),
           checkForNumber
         ])
       ],
