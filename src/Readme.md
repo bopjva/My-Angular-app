@@ -127,3 +127,8 @@ http://localhost:4200/api/student?name='bhargav'&state='va'&age=27
 
 Use push operator to add new object to array
 Use spread operator to add to new variable to object
+
+
+
+npm install --save @ngrx/store
+register StoreModule in appModule(let storeModule know which reducer we are looking for).

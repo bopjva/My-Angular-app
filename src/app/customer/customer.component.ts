@@ -24,4 +24,56 @@ export class CustomerComponent implements OnInit {
 
 
 
+
+store = {
+  searchResults: [],
+  statesData: [],
+  formData: any,
+}
+
+// updating data into searchResults
+store = {
+  searchResults: [{}, {}, {}],
+  statesData: [],
+  formData: any,
+}
+
+
+// updating data into statesData
+store = {
+  searchResults: [],
+  statesData: [va, ca, md],
+  formData: any,
+}
+
+
+// updating data into formData
+store = {
+  searchResults: [],
+  statesData: [],
+  formData: {name: '', id:''},
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

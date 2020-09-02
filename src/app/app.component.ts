@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // impott AppService in app compenent to interact with app service
 import { AppService } from './app.service';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.reducer';
 // component is nothing but class in JS
 @Component({
   // selector is unique
@@ -8,9 +10,11 @@ import { AppService } from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
   // variable declaration- Global variables
   customerId: String = '498uid';
+  loading: boolean = false;
   age: number = 28;
   accountOwner: boolean = true;
   r: number;
@@ -68,9 +72,13 @@ export class AppComponent {
   // employeeList: any = 'Hi';
   // constructor function print by defult without calling it
   //  calling app service in constructor by passing as variable
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, private store: Store<AppState>) {
     // console log prints the data in console in the browser
     console.log('constructor called');
+  }
+
+  ngOnInit() {
+    this.store.select(state => state.homeState.loading).subscribe(res => this.loading = res);
   }
 
   someFunction() {

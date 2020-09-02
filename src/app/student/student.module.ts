@@ -8,9 +8,18 @@ import { StudentResultsComponent } from '../student-results/student-results.comp
 import { StudentFilterComponent } from './student-filter/student-filter.component';
 import { StudentTableComponent } from './student-table/student-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared.module';
+import { StoreModule } from '@ngrx/store';
+import { schoolReducer } from './store/store.reducer';
 
 @NgModule({
   declarations: [StudentComponent, StudentheaderComponent, StudentResultsComponent, StudentFilterComponent, StudentTableComponent],
-  imports: [CommonModule, StudentRoutingModule, FormsModule, ReactiveFormsModule]
+  imports: [
+    CommonModule,
+    StudentRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
+  ]
 })
 export class StudentModule { }

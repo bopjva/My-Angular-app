@@ -21,7 +21,12 @@ import { CreateParentComponent } from './school/create-parent/create-parent.comp
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerFilterComponent } from './customer/customer-filter/customer-filter.component';
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
-
+import {StoreModule} from '@ngrx/store';
+import { homeReducer } from './store/home.reducer';
+import { appReducer } from './app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { SharedModule } from './shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,10 +50,12 @@ import { CustomerTableComponent } from './customer/customer-table/customer-table
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

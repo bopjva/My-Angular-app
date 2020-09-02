@@ -5,9 +5,12 @@
 <br />
 <br />
 <br />
+<div class="comp-overlay" role="img"  *ngIf="loading"><img style="margin:10% 40%;height:10%;" src="assets/img/loader.gif" aria-label="loading"/></div>
+
 <!-- {{ myId }} -->
 <!-- <button (click)="oneWayDataBinding()">One Way Binding</button> -->
 <br />
+
 <!-- <input type="number" name="myId" id="myId" [(ngModel)]="myId" /> -->
 <!-- router outlet used for navigation of all the page components  and it is one of the directives-->
 <router-outlet></router-outlet>

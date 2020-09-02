@@ -6,12 +6,12 @@
   name="studentId"
   id="studentId"
 >
-  <option value="{{ studentId }}" *ngFor="let studentId of idList.data">{{
+  <option value="{{ studentId }}" *ngFor="let studentId of idList">{{
     studentId
   }}</option>
 </select>
-
 <div *ngIf="showData">
-  <p>Name= {{ studentData.data.studentName }}</p>
-  <p>Id= {{ studentData.data.studentId }}</p>
-</div>
+
+<p>Name= {{ studentData.studentName}}</p> 
+<p>Id= {{studentData.studentId }}</p> 
+ </div>
