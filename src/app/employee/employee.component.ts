@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from '../app.service';
+import { SpinnerService } from '../shared-path/spinner.service';
 
 @Component({
   selector: 'app-employee',
@@ -14,7 +15,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('EmployeeComponent ngOnInit called');
   }
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, private spinnerService: SpinnerService) {
     // console log prints the data in console in the browser
     console.log('EmployeeComponent constructor called');
   }
@@ -24,6 +25,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   // }
   payBalanceDueFunction() {
     console.log('payBalanceDueFunction called');
+    this.spinnerService.loadSpinner(true);
+
     // console.log(this.amount);
     // subscribe is to use capture the reponse from service
     this.appService.getBillPaidInformation().subscribe(result => {
@@ -67,6 +70,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
           let emp = { ...employee, ageGroup: status };
           this.newEmpList.push(emp);
         }
+        this.spinnerService.loadSpinner(false);
+
       });
 
       // console.log(this.employeeList.data);

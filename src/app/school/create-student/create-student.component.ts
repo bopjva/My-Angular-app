@@ -67,13 +67,13 @@ export class CreateStudentComponent implements OnInit {
   createForm() {
     // creating the "studentCreateForm" as form type and this.fb.group make interaction with html and ts
     this.studentCreateForm = this.fb.group({
-      studentId: [null],
+      studentId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       studentName: [
         '',
         Validators.compose([
           Validators.required,
           Validators.maxLength(10),
-          Validators.minLength(4),
+          Validators.minLength(2),
           checkForNumber
         ])
       ],
@@ -91,21 +91,26 @@ export class CreateStudentComponent implements OnInit {
     // console.log(r);
     console.log(this.studentCreateForm);
     this.formSubmitStatus = true;
-    console.log('createStudent function called');
-    console.log(this.studentCreateForm);
-    let stuForm: StudentModel = this.studentCreateForm.value;
-    this.schoolService
-      .addStudent(this.studentCreateForm.value)
-      .subscribe(result => {
-        this.res = result;
-        console.log(result);
-        this.successMessage = true;
-      }, (err) => {
-        console.log(err);
-      });
-    // console.log(this.studentCreateForm);
+    if (this.studentCreateForm.valid) {
+      console.log('createStudent function called');
+      console.log(this.studentCreateForm);
+      let stuForm: StudentModel = this.studentCreateForm.value;
+      this.schoolService
+        .addStudent(this.studentCreateForm.value)
+        .subscribe(result => {
+          this.res = result;
+          console.log(result);
+          this.successMessage = true;
+        }, (err) => {
+          console.log(err);
+        });
+    }
+
   }
+
+  // console.log(this.studentCreateForm);
 }
+
 
 // .subscribe((res) => {
   //success

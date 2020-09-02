@@ -48,7 +48,7 @@ export class SchoolService {
   }
   getUpdateStudentInfo(studentData: any) {
     console.log('getUpdateStudentInfo function called');
-    let url: string = '';
+    let url: string = 'http://localhost:3010/api/student/:id';
     console.log(url);
     let response = this.http.put(url, studentData);
     console.log(response);

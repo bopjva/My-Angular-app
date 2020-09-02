@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SearchResultsComponent } from '../search-results/search-results.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit',
@@ -15,7 +17,7 @@ export class EditComponent implements OnInit {
     private fb: FormBuilder,
     private schoolService: SchoolService,
     // routes and route are doing two diffent actions for different purpose
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private router: Router
   ) {
     console.log('2');
   }
@@ -34,6 +36,7 @@ export class EditComponent implements OnInit {
         console.log('7');
         this.patchStudentValues(result);
       });
+
   }
 
   createForm() {
@@ -46,7 +49,7 @@ export class EditComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(7),
+          Validators.maxLength(10),
           Validators.minLength(3)
         ])
       ],
@@ -63,13 +66,14 @@ export class EditComponent implements OnInit {
     console.log(e);
     e.preventDefault();
     // form validation
-    if (this.studentEditForm.valid) {
-      this.schoolService
-        .getUpdateStudentInfo(this.studentEditForm.value)
-        .subscribe(result => {
-          console.log(result);
-        });
-    }
+    this.router.navigate(['/school/search-results'], { queryParams: { search: true } });
+    // if (this.studentEditForm.valid) {
+    //   this.schoolService
+    //     .getUpdateStudentInfo(this.studentEditForm.value)
+    //     .subscribe(result => {
+    //       console.log(result);
+    //     });
+    // }
   }
   patchStudentValues(result: any) {
     console.log('8');

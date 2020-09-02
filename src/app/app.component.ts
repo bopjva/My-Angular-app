@@ -161,7 +161,7 @@ export class AppComponent implements OnInit{
     this.functionName(1, 2, 3);
   }
 
-  functionName(a: number, b: number, c: number) {}
+  functionName(a: number, b: number, c: number) { }
   caseNumberSearch() {
     // console is printing the caseNumber value
     console.log(this.caseNumber);
