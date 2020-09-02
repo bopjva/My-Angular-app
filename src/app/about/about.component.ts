@@ -8,6 +8,7 @@ import { SpinnerService } from '../shared-path/spinner.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit, OnDestroy {
+  // I will use redux
   idList: any;
   studentData: any;
   showData: boolean = false;
