@@ -96,6 +96,12 @@ export class SchoolService {
       this.store.dispatch({type: LOAD_SPINNER, payload: false});
     });
   }
+  
+  deleteData(id: string) {
+    let url = `http://localhost:3010/api/student/${id}`;
+    return this.http.delete(url);
+  }
+    
   // http://localhost:3000/api/getAllIds
   //   string params
   // http://localhost:4200/api/student/getById/CT0014
