@@ -127,3 +127,13 @@ http://localhost:4200/api/student?name='bhargav'&state='va'&age=27
 
 Use push operator to add new object to array
 Use spread operator to add to new variable to object
+
+Adding data into store
+
+1.  dispatch an action
+2.  action will call reducer
+3.  reducer will update store
+
+Receiving data into component from store
+
+1.  just subscribe store variable in ngOnInIt in the component.

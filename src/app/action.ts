@@ -1,0 +1,3 @@
+export const LOAD_SPINNER = 'LOAD_SPINNER';
+export const STUDENT_ID_LIST = 'STUDENT_ID_LIST';
+export const STUDENT_BY_ID = 'STUDENT_BY_ID';

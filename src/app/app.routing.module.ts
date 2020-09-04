@@ -12,6 +12,7 @@ import { SearchResultsComponent } from './school/search-results/search-results.c
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
 import { CreateParentComponent } from './school/create-parent/create-parent.component';
+import { } from './user/user.module';
 
 // routing logic for page navigation
 const routes: Routes = [
@@ -45,6 +46,12 @@ const routes: Routes = [
     path: 'student',
     loadChildren: () =>
       import('./student/student.module').then(m => m.StudentModule)
+  },
+
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./user/user.module').then(m => m.UserModule)
   }
 ];
 
@@ -52,4 +59,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

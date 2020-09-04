@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 // impott AppService in app compenent to interact with app service
 import { AppService } from './app.service';
 import { SpinnerService } from './shared-path/spinner.service';
+import { AppState } from './reducer';
+import { Store } from '@ngrx/store';
+
 // component is nothing but class in JS
 @Component({
-  // selector is unique
+  // selector is unique'
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -70,14 +73,17 @@ export class AppComponent implements OnInit {
   // employeeList: any = 'Hi';
   // constructor function print by defult without calling it
   //  calling app service in constructor by passing as variable
-  constructor(private appService: AppService, private spinnerService: SpinnerService) {
+  constructor(private appService: AppService, private spinnerService: SpinnerService, private store: Store<AppState>) {
     // console log prints the data in console in the browser
     console.log('constructor called');
   }
   ngOnInit() {
+    this.store.select(state => state.homeState.loading).subscribe(res => {
+      console.log(res);
+    })
     this.spinnerService.cast.subscribe(res => {
       this.loading = res;
-      console.log(this.loading);
+      // console.log(this.loading);
     })
 
 

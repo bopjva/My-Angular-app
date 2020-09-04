@@ -21,6 +21,8 @@ import { CreateParentComponent } from './school/create-parent/create-parent.comp
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerFilterComponent } from './customer/customer-filter/customer-filter.component';
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './reducer';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,9 @@ import { CustomerTableComponent } from './customer/customer-table/customer-table
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, StoreModule.forRoot(appReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

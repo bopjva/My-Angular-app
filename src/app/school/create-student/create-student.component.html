@@ -107,7 +107,7 @@
   <!-- <button [disabled]="studentCreateForm.valid" (click)="createStudent()"> -->
   <!-- Create Student-{{ studentCreateForm.valid }}-k -->
   <!-- </button> -->
-  <button (click)="createStudent()">
+  <button [disabled]="!studentCreateForm.valid" (click)="createStudent()">
     Create Student
   </button>
 </form>
@@ -115,5 +115,31 @@
 <div *ngIf="successMessage">
   <p>User has been created</p>
 </div>
+<br />
+<br />
+<h1>Show Checkboxes</h1>
+<form action="studentCreateForm">
+  <input type="checkbox" id="studentId" name="studentId" value="studentId" />
+  <label for="studentId">Select Student Id</label>
+</form>
 
+<form action="studentCreateForm">
+  <input
+    type="checkbox"
+    id="studentName"
+    name="studentName"
+    value="studentName"
+  />
+  <label for="studentName">Select Student Name</label>
+</form>
+
+<form action="studentCreateForm">
+  <input type="checkbox" id="year" name="year" value="year" />
+  <label for="year">Select Year</label>
+</form>
+
+<form action="studentCreateForm">
+  <input type="checkbox" id="course" name="course" value="course" />
+  <label for="course">Select Course</label>
+</form>
 <!-- [disabled]="!studentCreateForm.valid" [disabled]="!studentCreateForm.valid"-->

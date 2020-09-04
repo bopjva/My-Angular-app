@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ResponseModel } from './models/ResponseModel';
 import { SharedPathService } from '../shared-path/shared-path.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../reducer';
+import { LOAD_SPINNER, STUDENT_ID_LIST, STUDENT_BY_ID } from '../action';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class SchoolService {
 
-  constructor(private http: HttpClient, private sharedPathService: SharedPathService) {
+  constructor(private http: HttpClient, private sharedPathService: SharedPathService, private store: Store<AppState>) {
 
   }
   getAllStudents() {
@@ -71,14 +76,27 @@ export class SchoolService {
   getStudentIds() {
     console.log('3')
     let url = 'http://localhost:3010/api/getAllIds';
+    this.http.get(url).subscribe(res => {
+      this.store.dispatch({ type: LOAD_SPINNER, payload: false });
+      console.log('4')
+      this.store.dispatch({ type: STUDENT_ID_LIST, payload: res });
 
-    return this.http.get(url);
+    });
+
     // /api/student/:id
 
   }
   getStudentId(id: any) {
     let url1 = `http://localhost:3010/api/student/${id}`;
-    return this.http.get(url1);
+
+    this.http.get(url1).subscribe(res => {
+      this.store.dispatch({ type: LOAD_SPINNER, payload: false });
+      this.store.dispatch({ type: STUDENT_BY_ID, payload: res })
+
+      // make spinner off
+
+    });
+
   }
   deleteData(id: string) {
     let url = `http://localhost:3010/api/student/${id}`;
