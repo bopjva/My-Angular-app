@@ -11,7 +11,7 @@ import { LOAD_SPINNER } from '../action';
 })
 export class AboutComponent implements OnInit, OnDestroy {
   // I will use redux
-  idList: any;
+  idList: Array<string>;
   studentData: any;
   showData: boolean = false;
   constructor(private schoolService: SchoolService, private spinnerService: SpinnerService, private store: Store<AppState>) {

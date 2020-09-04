@@ -76,11 +76,13 @@ export class SchoolService {
   getStudentIds() {
     console.log('3')
     let url = 'http://localhost:3010/api/getAllIds';
-    this.http.get(url).subscribe(res => {
+    this.http.get<ResponseModel>(url).subscribe(res => {
       this.store.dispatch({ type: LOAD_SPINNER, payload: false });
       console.log('4')
-      this.store.dispatch({ type: STUDENT_ID_LIST, payload: res });
+      this.store.dispatch({ type: STUDENT_ID_LIST, payload: res.data });
 
+    }, (err) => {
+      console.log(err);
     });
 
     // /api/student/:id
@@ -89,12 +91,14 @@ export class SchoolService {
   getStudentId(id: any) {
     let url1 = `http://localhost:3010/api/student/${id}`;
 
-    this.http.get(url1).subscribe(res => {
+    this.http.get<ResponseModel>(url1).subscribe(res => {
       this.store.dispatch({ type: LOAD_SPINNER, payload: false });
-      this.store.dispatch({ type: STUDENT_BY_ID, payload: res })
+      this.store.dispatch({ type: STUDENT_BY_ID, payload: res.data })
 
       // make spinner off
 
+    }, (err) => {
+      console.log(err);
     });
 
   }

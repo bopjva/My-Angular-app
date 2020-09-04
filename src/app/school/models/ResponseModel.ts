@@ -1,8 +1,8 @@
 export class ResponseModel {
-  data: Array<any>;
-  status: any;
+  data: any;
+  status: number;
   constructor() {
-    this.data = [];
+    this.data = null;
     this.status = null;
   }
 }
