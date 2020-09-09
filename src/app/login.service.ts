@@ -5,17 +5,21 @@ import { Store } from '@ngrx/store';
 import { USER_DETAILS, LOGIN_STATUS } from './action';
 import { AppState } from './reducer';
 import { Router } from '@angular/router';
-
+import { Headers } from '@angular/http';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+
   constructor(private http: HttpClient, private store: Store<AppState>, private router: Router) { }
   getloginCredentials(loginCredentials: any) {
-    console.log(loginCredentials);
 
-    this.http.post<ResponseModel>("http://localhost:3010/api/login", loginCredentials).subscribe(res => {
+    console.log(loginCredentials);
+    // console.log(token);
+    // console.log(headers);
+    this.http.post<ResponseModel>("http://localhost:3010/api/login", loginCredentials,).subscribe(res => {
+      console.log(res);
       console.log(res.data.token);
       console.log(res.data.formattedUser);
 

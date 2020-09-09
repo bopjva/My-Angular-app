@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { SpinnerService } from './shared-path/spinner.service';
 import { AppState } from './reducer';
-import { Store } from '@ngrx/store';
+import { Store, State } from '@ngrx/store';
 
 // component is nothing but class in JS
 @Component({
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   loading: boolean = false;
   // declare the showTable variable as boolean
   showTable: boolean = false;
-
+  showNav: any;
   // OBJECT
   customer = {
     cId: 1,
@@ -85,7 +85,9 @@ export class AppComponent implements OnInit {
       this.loading = res;
       // console.log(this.loading);
     })
-
+    this.store.select(State => State.homeState.loginStatus).subscribe(res => {
+      this.showNav = res;
+    })
 
   }
   someFunction() {

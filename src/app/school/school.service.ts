@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResponseModel } from './models/ResponseModel';
 import { SharedPathService } from '../shared-path/shared-path.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducer';
 import { LOAD_SPINNER, STUDENT_ID_LIST, STUDENT_BY_ID } from '../action';
-
-
+// import { Http, Headers } from '@angular/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -75,8 +74,11 @@ export class SchoolService {
   }
   getStudentIds() {
     console.log('3')
+    // let headers = new Headers()
+    let token = sessionStorage.getItem('token');
+    const h = new HttpHeaders({ 'Authorization': token });
     let url = 'http://localhost:3010/api/getAllIds';
-    this.http.get<ResponseModel>(url).subscribe(res => {
+    this.http.get<ResponseModel>(url, { headers: h }).subscribe(res => {
       this.store.dispatch({ type: LOAD_SPINNER, payload: false });
       console.log('4')
       this.store.dispatch({ type: STUDENT_ID_LIST, payload: res.data });
@@ -89,6 +91,7 @@ export class SchoolService {
 
   }
   getStudentId(id: any) {
+
     let url1 = `http://localhost:3010/api/student/${id}`;
 
     this.http.get<ResponseModel>(url1).subscribe(res => {
