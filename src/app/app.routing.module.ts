@@ -12,13 +12,12 @@ import { SearchResultsComponent } from './school/search-results/search-results.c
 import { CreateStudentComponent } from './school/create-student/create-student.component';
 import { EditComponent } from './school/edit/edit.component';
 import { CreateParentComponent } from './school/create-parent/create-parent.component';
-import { } from './user/user.module';
+import { LoginComponent } from './login/login.component';
 
-// routing logic for page navigation
 const routes: Routes = [
-  // {path: 'home', component: HomeComponent},
-  //redirecTo syntax will be used to default ruting to given page below example:home
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   // each component url will have given below name in quotes at the end of main url to navaigate to specific page
   { path: 'employee', component: EmployeeComponent },
   { path: 'customer', component: CustomerComponent },

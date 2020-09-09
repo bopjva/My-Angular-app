@@ -23,6 +23,8 @@ import { CustomerFilterComponent } from './customer/customer-filter/customer-fil
 import { CustomerTableComponent } from './customer/customer-table/customer-table.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './reducer';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -43,13 +45,15 @@ import { appReducer } from './reducer';
     EditComponent,
     CreateParentComponent,
     CustomerFilterComponent,
-    CustomerTableComponent
+    CustomerTableComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule, StoreModule.forRoot(appReducer)
   ],
   providers: [],

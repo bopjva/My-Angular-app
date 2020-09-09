@@ -11,12 +11,20 @@ import { LOAD_SPINNER } from '../action';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  showUserandLogout: boolean;
+  userDetails: any;
   //  constructor also function and executed by defaukt when call the component and this relates to type script
   // constructor executes before the  ngOnInit function
   constructor(private router: Router, private schoolService: SchoolService, private store: Store<AppState>) { }
   // ngOnInit also function and executed by defaukt when call the component and this relates to angular
 
   ngOnInit() {
+    this.store.select(state => state.homeState.loginStatus).subscribe(res => {
+      this.showUserandLogout = res;
+    })
+    this.store.select(state => state.homeState.userDetails).subscribe(res => {
+      this.userDetails = res;
+    })
 
   }
   homeRoute() {
@@ -47,6 +55,9 @@ export class HeaderComponent implements OnInit {
   }
   studentRoute() {
     this.router.navigate(['/student']);
+  }
+  userRoute() {
+    this.router.navigate(['/user']);
   }
   schoolRoute() {
     this.router.navigate(['/school']);

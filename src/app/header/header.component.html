@@ -15,6 +15,14 @@
     <a (click)="studentRoute()" routerLink="Student">Student(Lazy Loading)</a>
   </li>
   <li routerLinkActive="active">
+    <a (click)="userRoute()" routerLink="User">User(Lazy Loading)</a>
+  </li>
+  <li routerLinkActive="active">
     <a (click)="aboutRoute()" [routerLink]="['About Us']">About Us</a>
   </li>
+  <li>
+    <a *ngIf="showUserandLogout">Logged in as-{{ userDetails.userName }}</a>
+  </li>
+
+  <button *ngIf="showUserandLogout" type="submit">Log out</button>
 </ul>
