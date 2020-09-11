@@ -4,6 +4,7 @@ import { SchoolService } from '../school/school.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducer';
 import { LOAD_SPINNER } from '../action';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   userDetails: any;
   //  constructor also function and executed by defaukt when call the component and this relates to type script
   // constructor executes before the  ngOnInit function
-  constructor(private router: Router, private schoolService: SchoolService, private store: Store<AppState>) { }
+  constructor(private router: Router, private schoolService: SchoolService, private store: Store<AppState>, private loginService: LoginService) { }
   // ngOnInit also function and executed by defaukt when call the component and this relates to angular
 
   ngOnInit() {
@@ -62,4 +63,10 @@ export class HeaderComponent implements OnInit {
   schoolRoute() {
     this.router.navigate(['/school']);
   }
+  logOut() {
+
+    this.loginService.loggedOut();
+  }
+
+
 }

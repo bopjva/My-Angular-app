@@ -16,7 +16,7 @@ export const HOME_INITIALSTATE: HomeState = {
 
 }
 export function homeReducer(state = HOME_INITIALSTATE, action) {
-  debugger;
+  // debugger;
   switch (action.type) {
     case LOAD_SPINNER:
       console.log('2');

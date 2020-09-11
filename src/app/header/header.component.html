@@ -5,7 +5,7 @@
   <li routerLinkActive="active">
     <a (click)="employeeRoute()" routerLink="Employee">Employee</a>
   </li>
-  <li routerLinkActive="active">
+  <li routerLinkActive="active" *ngIf="userDetails.role !== 'employee'">
     <a (click)="customerRoute()" routerLink="Customer">Customer</a>
   </li>
   <li routerLinkActive="active">
@@ -24,5 +24,7 @@
     <a *ngIf="showUserandLogout">Logged in as-{{ userDetails.userName }}</a>
   </li>
 
-  <button *ngIf="showUserandLogout" type="submit">Log out</button>
+  <button *ngIf="showUserandLogout" (click)="logOut()" type="submit">
+    Log Out
+  </button>
 </ul>

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -25,6 +25,10 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './reducer';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { AppInterceptor } from './app.interceptor';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { LogInterceptor } from './log.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,9 +58,12 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     AppRoutingModule,
     RouterModule,
-    ReactiveFormsModule, StoreModule.forRoot(appReducer)
+    ReactiveFormsModule, StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: LogInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
