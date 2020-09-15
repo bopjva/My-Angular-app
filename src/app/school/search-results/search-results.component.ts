@@ -48,8 +48,8 @@ export class SearchResultsComponent implements OnInit {
     this.router.navigate(['/school/create']);
   }
   editFunction(id: string) {
-    console.log('Edit Flow');
-    console.log('1');
+    // console.log('Edit Flow');
+    // console.log('1');
     // console.log(`/school/edit/${id}`);
     // dynamic route, how you pass dynamic params to url
     this.router.navigate([`/school/edit/${id}`]);

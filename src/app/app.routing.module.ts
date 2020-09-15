@@ -13,14 +13,17 @@ import { CreateStudentComponent } from './school/create-student/create-student.c
 import { EditComponent } from './school/edit/edit.component';
 import { CreateParentComponent } from './school/create-parent/create-parent.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.canactivate.service';
+import { RoleBasedGuard } from './rolebased.canactivate.service';
+import { RoleBasedChildGuard } from './rolebasedchildguard.service';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // each component url will have given below name in quotes at the end of main url to navaigate to specific page
-  { path: 'employee', component: EmployeeComponent },
-  { path: 'customer', component: CustomerComponent },
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'customer', component: CustomerComponent, canActivate: [AuthGuard, RoleBasedGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactusComponent },
@@ -30,6 +33,7 @@ const routes: Routes = [
   {
     path: 'school',
     component: SchoolComponent,
+    canActivateChild: [RoleBasedChildGuard],
     children: [
       { path: '', redirectTo: 'search-results', pathMatch: 'full' },
       { path: 'search-results', component: SearchResultsComponent },
